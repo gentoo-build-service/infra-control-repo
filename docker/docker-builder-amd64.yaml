@@ -8,6 +8,6 @@ script:
   - ./docker-companion squash --remove gentoobuildservice/builder-docker-amd64
   - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
   - docker push gentoobuildservice/builder-docker-amd64
-task: docker_execute
+type: docker
 storage: '5778981929632715504'
 planned: "@daily"
