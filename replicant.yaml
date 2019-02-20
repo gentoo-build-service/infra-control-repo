@@ -1,0 +1,19 @@
+name: "Replicant job"
+type: docker
+source: "https://github.com/gentoo-build-service/infra-control-repo"
+environment:
+  - LC_ALL=en_US.UTF-8
+image: sabayon/base-amd64
+storage: "6908882380256883386"
+planned: '@weekly'
+environment:
+- ACCEPT_LICENSE=*
+script:
+  - equo i enman git > /dev/null
+  - enman add devel && equo up > /dev/null
+  - bash storage/check.sh
+  - equo i replicant mottainai-cli > /dev/null
+  - mkdir -p /root/.config/
+  - bash storage/create_profile.sh
+  - replicant -p gentoo environment destroy
+  - replicant -p gentoo environment deploy
