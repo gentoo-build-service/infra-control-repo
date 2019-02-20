@@ -1,3 +1,4 @@
+name: "Build gentoobuildservice/builder-docker-amd64"
 source: https://github.com/gentoo-build-service/docker-images
 image: gentoobuildservice/builder-docker-amd64
 directory: /docker
